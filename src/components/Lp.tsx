@@ -12,17 +12,17 @@ import {
   AccordionPanel,
   Divider,
 } from "@chakra-ui/react";
-import imgdevs from "./images/imgdevs.png";
-import doutoradevs from "./images/doutoradevs.png";
-import pcdevs from "./images/pcdevs.png";
-import devsdevs from "./images/devsdevs.png";
-import tesouradev from "./images/tesouradev.png";
-import relogiodev from "./images/relogiodev.png";
-import livrodev from "./images/livrodev.png";
-import quadrado from "./images/quadrado.png";
-import devsorri from "./images/devsorri.png";
-import pcdev from "./images/pcdev.png";
-import jobdev from "./images/jobdev.png";
+import imgdevs from "../images/imgdevs.png";
+import doutoradevs from "../images/doutoradevs.png";
+import pcdevs from "../images/pcdevs.png";
+import devsdevs from "../images/devsdevs.png";
+import tesouradev from "../images/tesouradev.png";
+import relogiodev from "../images/relogiodev.png";
+import livrodev from "../images/livrodev.png";
+import quadrado from "../images/quadrado.png";
+import devsorri from "../images/devsorri.png";
+import pcdev from "../images/pcdev.png";
+import jobdev from "../images/jobdev.png";
 function Ultpage({ clean, desc, title, width, high, img, reverse, marginb }) {
   return (
     <Box
@@ -146,72 +146,41 @@ function P4({ desc, desc1, reverse }) {
     </Flex>
   );
 }
-function Item2({
-  title,
-  bgColor,
-  fontColor,
-  desc1,
-  desc2,
-  desc3,
-  desc4,
-  bgColorButton,
-  fontColorButton,
-  img,
-  preco,
-}) {
+function Cf({ desc, title, width, value, mb }) {
   return (
-    <Box>
+    <Flex
+      mb={mb}
+      alignItems='center'
+      justifyContent='space-between'
+      w={{ base: "100%", md: "1280px" }}
+      flexDir={{ base: "column", md: "row" }}
+    >
+      <Flex flexDir='column' w={width}>
+        <Heading fontWeight='700' mb='16px' fontSize='28px' color='#0B0755'>
+          {title}
+        </Heading>
+        <Text textAlign='justify' fontSize='21px' color='#0B0755'>
+          {desc}
+        </Text>
+      </Flex>
       <Flex
+        mt='16px'
         alignItems='center'
         justifyContent='center'
-        w='340px'
-        backgroundColor={bgColor}
-        mb={{ base: "16px", md: "none" }}
+        fontSize='40px'
+        color='white'
+        w='265px'
+        h='96px'
+        bgColor='#3182CE'
+        rounded='md'
+        fontWeight='700'
       >
-        <Flex mb='52px' mt='32px' w='288px' h='465px'>
-          <Flex
-            justifyContent='space-between'
-            flexDir='column'
-            alignItems='center'
-          >
-            <Image src={img} w='100px' h='100px' />
-            <Heading fontSize='24px' color={fontColor}>
-              {title}
-            </Heading>
-            <Text fontSize='24px' color={fontColor}>
-              {preco}
-            </Text>
-            <Flex w='288px' border='1px solid #AEC3FF' />
-            <Flex flexDir='column' alignItems='center'>
-              <Text fontSize='18px' color={fontColor}>
-                {desc1}
-              </Text>
-              <Text fontSize='18px' color={fontColor}>
-                {desc2}
-              </Text>
-              <Text fontSize='18px' color={fontColor}>
-                {desc3}
-              </Text>
-              <Text fontSize='18px' color={fontColor}>
-                {desc4}
-              </Text>
-              <Button
-                fontSize={{ base: "16px", md: "24px" }}
-                mt='40px'
-                color={fontColorButton}
-                backgroundColor={bgColorButton}
-                w='203px'
-                h={{ base: "35px", md: "68px" }}
-              >
-                Assinar
-              </Button>
-            </Flex>
-          </Flex>
-        </Flex>
+        R$ {value}
       </Flex>
-    </Box>
+    </Flex>
   );
 }
+
 function Item({ icon, title, desc, mt }) {
   return (
     <Flex mt={mt}>
@@ -282,12 +251,15 @@ function Home() {
               src={imgdevs}
               mt={{ base: "8px", md: "0px" }}
             />
+            <Heading fontSize={{ base: "18px", md: "40px" }} color='#3182CE'>
+              Suporte Psicológico
+            </Heading>
             <Heading
               color='#0B0755'
               fontSize={{ base: "18px", md: "40px" }}
               w={{ base: "234px", md: "423px" }}
             >
-              Suporte Psicológico para Pessoas de Tecnologia
+              para Pessoas de Tecnologia
             </Heading>
             <Text
               mt={{ base: "8px", md: "51px" }}
@@ -307,7 +279,7 @@ function Home() {
               w={{ base: "232px", md: "423px" }}
               h={{ base: "35px", md: "68px" }}
               fontSize={{ base: "16px", md: "24px" }}
-              backgroundColor='#186F45'
+              backgroundColor='#2BB070'
               color='#FFFFFF'
               mb={{ base: "16px", md: "0px" }}
             >
@@ -326,18 +298,34 @@ function Home() {
       </Box>
       <Box backgroundColor='#E5E5E5'>
         <Flex
+          borderBottom={{ base: "none", md: "1px solid #0B0755" }}
+          paddingBottom='8px'
+          w={{ base: "100%", md: "628px" }}
+          justifyContent='center'
+          mx='auto'
+        >
+          <Heading
+            mr='6px'
+            textAlign='center'
+            fontSize={{ base: "18px", md: "32px" }}
+            color='#0B0755'
+            mt='40px'
+          >
+            O que é o
+          </Heading>
+          <Heading
+            mt='40px'
+            fontSize={{ base: "18px", md: "32px" }}
+            color='#3182CE'
+          >
+            plano de suporte psicológico?
+          </Heading>
+        </Flex>
+        <Flex
           alignItems='center'
           p={{ base: "24px 24px", md: "45px 142px" }}
           flexDir='column'
         >
-          <Heading
-            textAlign='center'
-            fontSize={{ base: "18px", md: "32px" }}
-            color='#0B0755'
-            mb={{ base: "16px", md: "41px" }}
-          >
-            O que é o plano de suporte psicológico?
-          </Heading>
           <Flex
             flexDir={{ base: "column", md: "row" }}
             justifyContent='space-between'
@@ -374,13 +362,26 @@ function Home() {
         backgroundColor='#F4F7FD'
       >
         <Box>
-          <Heading
-            textAlign='center'
-            color='#0B0755'
-            fontSize={{ base: "18px", md: "32px" }}
+          <Flex
+            borderBottom={{ base: "none", md: "1px solid #0B0755" }}
+            paddingBottom='8px'
+            w={{ base: "100%", md: "456px" }}
+            justifyContent='center'
+            mx='auto'
           >
-            Quais os principais benefícios?
-          </Heading>
+            <Heading
+              mr='6px'
+              textAlign='center'
+              color='#0B0755'
+              fontSize={{ base: "18px", md: "32px" }}
+              bgColor='#F4F7FD'
+            >
+              Quais os principais
+            </Heading>
+            <Heading color='#3182CE' fontSize={{ base: "18px", md: "32px" }}>
+              benefícios?
+            </Heading>
+          </Flex>
         </Box>
 
         <Flex
@@ -435,7 +436,7 @@ function Home() {
             w={{ base: "232px", md: "440px" }}
             h={{ base: "35px", md: "71px" }}
             fontSize={{ base: "16px", md: "24px" }}
-            backgroundColor='#186F45'
+            backgroundColor='#2BB070'
             color='#FFFFFF'
           >
             Coloque sua saúde mental em dia
@@ -445,19 +446,19 @@ function Home() {
             w={{ base: "232px", md: "440px" }}
             h={{ base: "35px", md: "71px" }}
             fontSize={{ base: "16px", md: "24px" }}
-            backgroundColor='#186F45'
+            backgroundColor='#2BB070'
             color='#FFFFFF'
           >
             Comece a cuidar de você!
           </Button>
         </Flex>
       </Box>
-      <Box backgroundColor='#E5E5E5'>
-        <Flex flexDir='column'>
+      <Box backgroundColor='white' justifyContent='center'>
+        <Flex padding={{ base: "36px 16px", md: "none" }} flexDir='column'>
           <Flex
             display={{ base: "block", md: "flex" }}
             mt={{ base: "24px", md: "40px" }}
-            borderBottom='1px solid #0B0755'
+            borderBottom={{ base: "none", md: "1px solid #0B0755" }}
             paddingBottom='8px'
             w={{ base: "180px", md: "306px" }}
             mx='auto'
@@ -467,13 +468,13 @@ function Home() {
           >
             <Heading
               mr='5px'
-              fontSize={{ base: "24px", md: "40px" }}
+              fontSize={{ base: "18px", md: "40px" }}
               color='#0B0755'
             >
-              Planos
+              Como
             </Heading>
-            <Heading fontSize={{ base: "24px", md: "40px" }} color='#1672F9'>
-              Flexíveis
+            <Heading fontSize={{ base: "18px", md: "40px" }} color='#1672F9'>
+              Funciona
             </Heading>
           </Flex>
 
@@ -481,73 +482,67 @@ function Home() {
             textAlign='center'
             fontSize={{ base: "14px", md: "20px" }}
             color='#0B0755'
+            mb='49px'
           >
-            Escolha o plano que cabe no seu bolso
+            Sua saúde mental em dia em duas etapas
           </Text>
-        </Flex>
-        <Flex>
           <Flex
-            mb={{ base: "16px", md: "80px" }}
-            mt='40px'
-            mx='auto'
-            backgroundColor='#E5E5E5'
-            alignItems='center'
             justifyContent='space-between'
-            flexDir={{ base: "column", md: "row" }}
-            w='1120px'
+            flexDir='column'
+            alignItems='center'
           >
-            <Item2
-              desc1='Este plano tem esse detalhe'
-              desc2='Este plano tem esse detalhe'
-              desc3='Este plano tem esse detalhe'
-              desc4='Este plano tem esse detalhe'
-              fontColor='#0B0755'
-              bgColor='#FFFFFF'
-              fontColorButton='white'
-              bgColorButton='#0B0755'
-              title='Plano 1'
-              img={quadrado}
-              preco='R$ XX,XX'
+            <Cf
+              title='Sessão de avaliação'
+              desc='Uma sessão para identificar o que te causa desconforto emocional, como você pode trabalhar isso junto com
+              o psicólogo, o que pode ser feito para melhor suprir suas necessidades durante o acompanhamento e como isso pode
+              impactar positivamente na sua vida'
+              width={{ base: "100%", md: "620px" }}
+              mb='120px'
             />
-            <Item2
-              desc1='Este plano tem esse detalhe'
-              desc2='Este plano tem esse detalhe'
-              desc3='Este plano tem esse detalhe'
-              desc4='Este plano tem esse detalhe'
-              bgColorButton='white'
-              fontColorButton='#0B0755'
-              fontColor='#FFFFFF'
-              bgColor='#0B0755'
-              title='Plano 2'
-              img={quadrado}
-              preco='R$ XX,XX'
-            />
-            <Item2
-              desc1='Este plano tem esse detalhe'
-              desc2='Este plano tem esse detalhe'
-              desc3='Este plano tem esse detalhe'
-              desc4='Este plano tem esse detalhe'
-              fontColor='#0B0755'
-              bgColor='#FFFFFF'
-              fontColorButton='white'
-              bgColorButton='#0B0755'
-              title='Plano 3'
-              img={quadrado}
-              preco='R$ XX,XX'
+            <Cf
+              title='Acompanhamento Psicológico'
+              desc='Você terá consultas semanais com todo o suporte através de vídeo chamadas para que você consiga identificar e tratar
+              o que lhe causa desconforto. O acompanhamento conta com receitas digitais para facilitar o tratamento.'
+              width={{ base: "100%", md: "620px" }}
+              value='69,99'
             />
           </Flex>
+        </Flex>
+        <Flex justifyContent='center'>
+          <Button
+            mt='48px'
+            mb='32px'
+            w='440px'
+            h='71px'
+            color='white'
+            fontSize='24px'
+            bgColor='#2BB070'
+          >
+            Quero começar agora!
+          </Button>
         </Flex>
       </Box>
 
       <Box bgColor='#F4F7FD'>
         <Flex flexDir='column'>
-          <Flex justifyContent='center' mt='40px'>
+          <Flex
+            justifyContent='center'
+            mt='40px'
+            w='706px'
+            borderBottom={{ base: "none", md: "1px solid #0B0755" }}
+            paddingBottom='8px'
+            mx='auto'
+          >
             <Heading
               fontSize={{ base: "18px", md: "32px" }}
               textAlign='center'
               color='#0B0755'
+              mr='8px'
             >
-              Veja o que nossos clientes acham
+              Em dúvida? Veja o que dizem
+            </Heading>
+            <Heading color='#3182CE' fontSize={{ base: "18px", md: "32px" }}>
+              nossos clientes
             </Heading>
           </Flex>
 
@@ -575,7 +570,7 @@ function Home() {
             <Button
               display={{ base: "none", md: "flex" }}
               mt={{ base: "40px", md: "124px" }}
-              bgColor='#186F45'
+              bgColor='#2BB070'
               w={{ base: "232px", md: "440px" }}
               h={{ base: "35px", md: "80px" }}
               color='#FFFFFF'
@@ -588,7 +583,7 @@ function Home() {
             <Button
               display={{ base: "flex", md: "none" }}
               mt={{ base: "40px", md: "124px" }}
-              bgColor='#186F45'
+              bgColor='#2BB070'
               w={{ base: "232px", md: "440px" }}
               h={{ base: "35px", md: "80px" }}
               color='#FFFFFF'
@@ -604,7 +599,7 @@ function Home() {
         <Flex flexDir='column' alignItems='center'>
           <Flex
             mt={{ base: "0px", md: "50px" }}
-            borderBottom='1px solid #0B0755'
+            borderBottom={{ base: "none", md: "1px solid #0B0755" }}
             paddingBottom='8px'
             w={{ base: "100%", md: "346px" }}
             justifyContent='center'
@@ -650,7 +645,7 @@ function Home() {
           <Button
             display={{ base: "flex", md: "none" }}
             mt={{ base: "40px", md: "124px" }}
-            bgColor='#186F45'
+            bgColor='#2BB070'
             w={{ base: "232px", md: "440px" }}
             h={{ base: "35px", md: "80px" }}
             color='#FFFFFF'
@@ -662,7 +657,7 @@ function Home() {
           <Button
             display={{ base: "none", md: "flex" }}
             mt={{ base: "40px", md: "124px" }}
-            bgColor='#186F45'
+            bgColor='#2BB070'
             w={{ base: "232px", md: "440px" }}
             h={{ base: "35px", md: "80px" }}
             color='#FFFFFF'
@@ -676,8 +671,15 @@ function Home() {
       <Box bgColor='#F4F7FD'>
         <Flex alignItems='center' flexDir='column'>
           <Flex justifyContent='center' mt={{ base: "16px", md: "80px" }}>
-            <Heading fontSize={{ base: "18px", md: "32px" }} color='#0B0755'>
-              Conheça nossos projetos
+            <Heading
+              mr='8px'
+              fontSize={{ base: "18px", md: "32px" }}
+              color='#0B0755'
+            >
+              Conheça nossos
+            </Heading>
+            <Heading color='#3182CE' fontSize={{ base: "18px", md: "32px" }}>
+              projetos
             </Heading>
           </Flex>
           <Flex
