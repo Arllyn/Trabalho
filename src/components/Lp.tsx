@@ -11,6 +11,7 @@ import {
   AccordionItem,
   AccordionPanel,
   Divider,
+  Icon,
 } from "@chakra-ui/react";
 import imgdevs from "../images/imgdevs.png";
 import doutoradevs from "../images/doutoradevs.png";
@@ -23,10 +24,12 @@ import quadrado from "../images/quadrado.png";
 import devsorri from "../images/devsorri.png";
 import pcdev from "../images/pcdev.png";
 import jobdev from "../images/jobdev.png";
-function Ultpage({ clean, desc, title, width, high, img, reverse, marginb }) {
+import { FiArrowUp, FiArrowDown } from "react-icons/fi";
+
+function Ultpage({ display, desc, title, width, high, img, reverse, marginb }) {
   return (
     <Box
-      display={clean}
+      d={display}
       rounded="md"
       w={{ base: "348px", md: "580px" }}
       p={{ base: "16px 16px", md: "16px 24px" }}
@@ -74,15 +77,31 @@ function Faqpage({ title, desc }) {
       <Accordion allowMultiple>
         <AccordionItem rounded="md" boxShadow="md">
           <AccordionButton
-            w={{ base: "100%", md: "1280px" }}
+            w={{ base: "328px", md: "1280px" }}
             onClick={handleToggle}
           >
-            <Text color="#0B0755" fontSize={{ base: "12px", md: "24px" }}>
-              {title}
-            </Text>
+            <Flex w="100%" alignItems="center" justifyContent="space-between">
+              <Text color="#0B0755" fontSize={{ base: "12px", md: "24px" }}>
+                {title}
+              </Text>
+
+              {show ? (
+                <Icon
+                  color="blue"
+                  as={FiArrowUp}
+                  fontSize={{ base: "18px", md: "25px" }}
+                />
+              ) : (
+                <Icon
+                  color="blue"
+                  as={FiArrowDown}
+                  fontSize={{ base: "18px", md: "25px" }}
+                />
+              )}
+            </Flex>
           </AccordionButton>
           <Divider />
-          <AccordionPanel w={{ base: "100%", md: "1280px" }}>
+          <AccordionPanel w={{ base: "328px", md: "1280px" }}>
             <Text
               fontSize={{ base: "12px", md: "20px" }}
               color="#2F2E41"
@@ -142,6 +161,40 @@ function P4({ desc, desc1, reverse }) {
             {desc1}
           </Text>
         </Flex>
+      </Flex>
+    </Flex>
+  );
+}
+function Cf({ desc, title, value, mb = "0px" }) {
+  return (
+    <Flex
+      mb={mb}
+      alignItems="center"
+      justifyContent="space-between"
+      w={{ base: "100%", md: "1280px" }}
+      flexDir={{ base: "column", md: "row" }}
+    >
+      <Flex flexDir="column" w={{ base: "100%", md: "620px" }}>
+        <Heading fontWeight="700" mb="16px" fontSize="28px" color="#0B0755">
+          {title}
+        </Heading>
+        <Text textAlign="justify" fontSize="21px" color="#0B0755">
+          {desc}
+        </Text>
+      </Flex>
+      <Flex
+        mt="16px"
+        alignItems="center"
+        justifyContent="center"
+        fontSize="40px"
+        color="white"
+        w="265px"
+        h="96px"
+        bgColor="#3182CE"
+        rounded="md"
+        fontWeight="700"
+      >
+        R$ {value}
       </Flex>
     </Flex>
   );
@@ -217,12 +270,15 @@ function Home() {
               src={imgdevs}
               mt={{ base: "8px", md: "0px" }}
             />
+            <Heading fontSize={{ base: "18px", md: "40px" }} color="#3182CE">
+              Suporte Psicológico
+            </Heading>
             <Heading
               color="#0B0755"
               fontSize={{ base: "18px", md: "40px" }}
               w={{ base: "234px", md: "423px" }}
             >
-              Suporte Psicológico para Pessoas de Tecnologia
+              para Pessoas de Tecnologia
             </Heading>
             <Text
               mt={{ base: "8px", md: "51px" }}
@@ -242,7 +298,7 @@ function Home() {
               w={{ base: "232px", md: "423px" }}
               h={{ base: "35px", md: "68px" }}
               fontSize={{ base: "16px", md: "24px" }}
-              backgroundColor="#186F45"
+              backgroundColor="#2BB070"
               color="#FFFFFF"
               mb={{ base: "16px", md: "0px" }}
             >
@@ -261,18 +317,34 @@ function Home() {
       </Box>
       <Box backgroundColor="#E5E5E5">
         <Flex
+          borderBottom={{ base: "none", md: "1px solid #0B0755" }}
+          paddingBottom="8px"
+          w={{ base: "100%", md: "628px" }}
+          justifyContent="center"
+          mx="auto"
+        >
+          <Heading
+            mr="6px"
+            textAlign="center"
+            fontSize={{ base: "18px", md: "32px" }}
+            color="#0B0755"
+            mt="40px"
+          >
+            O que é o
+          </Heading>
+          <Heading
+            mt="40px"
+            fontSize={{ base: "18px", md: "32px" }}
+            color="#3182CE"
+          >
+            plano de suporte psicológico?
+          </Heading>
+        </Flex>
+        <Flex
           alignItems="center"
           p={{ base: "24px 24px", md: "45px 142px" }}
           flexDir="column"
         >
-          <Heading
-            textAlign="center"
-            fontSize={{ base: "18px", md: "32px" }}
-            color="#0B0755"
-            mb={{ base: "16px", md: "41px" }}
-          >
-            O que é o plano de suporte psicológico?
-          </Heading>
           <Flex
             flexDir={{ base: "column", md: "row" }}
             justifyContent="space-between"
@@ -308,15 +380,27 @@ function Home() {
         alignItems="center"
         backgroundColor="#F4F7FD"
       >
-        <Box>
+        <Flex
+          flexWrap="wrap"
+          borderBottom={{ base: "none", md: "1px solid #0B0755 " }}
+          paddingBottom="8px "
+          w={{ base: "100%", md: "452px" }}
+          justifyContent="center"
+          mx="auto"
+        >
           <Heading
+            mr="6px"
             textAlign="center"
             color="#0B0755"
             fontSize={{ base: "18px", md: "32px" }}
+            bgColor="#F4F7FD"
           >
-            Quais os principais benefícios?
+            Quais os principais
           </Heading>
-        </Box>
+          <Heading color="#3182CE" fontSize={{ base: "18px", md: "32px" }}>
+            benefícios?
+          </Heading>
+        </Flex>
 
         <Flex
           mb={{ base: "24px", md: "0px" }}
@@ -370,7 +454,7 @@ function Home() {
             w={{ base: "232px", md: "440px" }}
             h={{ base: "35px", md: "71px" }}
             fontSize={{ base: "16px", md: "24px" }}
-            backgroundColor="#186F45"
+            backgroundColor="#2BB070"
             color="#FFFFFF"
           >
             Coloque sua saúde mental em dia
@@ -380,34 +464,37 @@ function Home() {
             w={{ base: "232px", md: "440px" }}
             h={{ base: "35px", md: "71px" }}
             fontSize={{ base: "16px", md: "24px" }}
-            backgroundColor="#186F45"
+            backgroundColor="#2BB070"
             color="#FFFFFF"
           >
             Comece a cuidar de você!
           </Button>
         </Flex>
       </Box>
-      <Box backgroundColor="#E5E5E5">
+      <Box
+        padding={{ base: "16px 38px", md: "none" }}
+        backgroundColor="white"
+        justifyContent="center"
+      >
         <Flex flexDir="column">
           <Flex
-            display={{ base: "block", md: "flex" }}
+            display={{ base: "flex", md: "flex" }}
             mt={{ base: "24px", md: "40px" }}
-            borderBottom="1px solid #0B0755"
+            borderBottom={{ base: "none", md: "1px solid #0B0755" }}
             paddingBottom="8px"
-            w={{ base: "180px", md: "306px" }}
+            w={{ base: "100%", md: "306px" }}
             mx="auto"
             textAlign="center"
-            fontSize={{ base: "24px", md: "40px" }}
             justifyContent="center"
           >
             <Heading
               mr="5px"
-              fontSize={{ base: "24px", md: "40px" }}
+              fontSize={{ base: "18px", md: "40px" }}
               color="#0B0755"
             >
               Como
             </Heading>
-            <Heading fontSize={{ base: "24px", md: "40px" }} color="#1672F9">
+            <Heading fontSize={{ base: "18px", md: "40px" }} color="#1672F9">
               Funciona
             </Heading>
           </Flex>
@@ -416,33 +503,67 @@ function Home() {
             textAlign="center"
             fontSize={{ base: "14px", md: "20px" }}
             color="#0B0755"
+            mb="49px"
           >
             Sua saúde mental em dia em duas etapas
           </Text>
-        </Flex>
-        <Flex>
           <Flex
-            mb={{ base: "16px", md: "80px" }}
-            mt="40px"
-            mx="auto"
-            backgroundColor="#E5E5E5"
-            alignItems="center"
             justifyContent="space-between"
-            flexDir={{ base: "column", md: "row" }}
-            w="1120px"
-          ></Flex>
+            flexDir="column"
+            alignItems="center"
+          >
+            <Cf
+              value="10"
+              title="Sessão de avaliação"
+              desc="Uma sessão para identificar o que te causa desconforto emocional, como você pode trabalhar isso junto com
+              o psicólogo, o que pode ser feito para melhor suprir suas necessidades durante o acompanhamento e como isso pode
+              impactar positivamente na sua vida"
+              mb="64px"
+            />
+            <Cf
+              // mb="0px"
+              title="Acompanhamento Psicológico"
+              desc="Você terá consultas semanais com todo o suporte através de vídeo chamadas para que você consiga identificar e tratar
+              o que lhe causa desconforto. O acompanhamento conta com receitas digitais para facilitar o tratamento."
+              value="69,99"
+            />
+          </Flex>
+        </Flex>
+        <Flex justifyContent="center">
+          <Button
+            mt="48px"
+            mb="32px"
+            w="440px"
+            h="71px"
+            color="white"
+            fontSize="24px"
+            bgColor="#2BB070"
+          >
+            Quero começar agora!
+          </Button>
         </Flex>
       </Box>
 
       <Box bgColor="#F4F7FD">
         <Flex flexDir="column">
-          <Flex justifyContent="center" mt="40px">
+          <Flex
+            justifyContent="center"
+            mt="40px"
+            w={{ base: "100%", md: "706px" }}
+            borderBottom={{ base: "none", md: "1px solid #0B0755" }}
+            paddingBottom="8px"
+            mx="auto"
+          >
             <Heading
               fontSize={{ base: "18px", md: "32px" }}
               textAlign="center"
               color="#0B0755"
+              mr="8px"
             >
-              Veja o que nossos clientes acham
+              Em dúvida? Veja o que dizem
+            </Heading>
+            <Heading color="#3182CE" fontSize={{ base: "18px", md: "32px" }}>
+              nossos clientes
             </Heading>
           </Flex>
 
@@ -470,7 +591,7 @@ function Home() {
             <Button
               display={{ base: "none", md: "flex" }}
               mt={{ base: "40px", md: "124px" }}
-              bgColor="#186F45"
+              bgColor="#2BB070"
               w={{ base: "232px", md: "440px" }}
               h={{ base: "35px", md: "80px" }}
               color="#FFFFFF"
@@ -483,7 +604,7 @@ function Home() {
             <Button
               display={{ base: "flex", md: "none" }}
               mt={{ base: "40px", md: "124px" }}
-              bgColor="#186F45"
+              bgColor="#2BB070"
               w={{ base: "232px", md: "440px" }}
               h={{ base: "35px", md: "80px" }}
               color="#FFFFFF"
@@ -499,7 +620,7 @@ function Home() {
         <Flex flexDir="column" alignItems="center">
           <Flex
             mt={{ base: "0px", md: "50px" }}
-            borderBottom="1px solid #0B0755"
+            borderBottom={{ base: "none", md: "1px solid #0B0755" }}
             paddingBottom="8px"
             w={{ base: "100%", md: "346px" }}
             justifyContent="center"
@@ -545,7 +666,7 @@ function Home() {
           <Button
             display={{ base: "flex", md: "none" }}
             mt={{ base: "40px", md: "124px" }}
-            bgColor="#186F45"
+            bgColor="#2BB070"
             w={{ base: "232px", md: "440px" }}
             h={{ base: "35px", md: "80px" }}
             color="#FFFFFF"
@@ -557,7 +678,7 @@ function Home() {
           <Button
             display={{ base: "none", md: "flex" }}
             mt={{ base: "40px", md: "124px" }}
-            bgColor="#186F45"
+            bgColor="#2BB070"
             w={{ base: "232px", md: "440px" }}
             h={{ base: "35px", md: "80px" }}
             color="#FFFFFF"
@@ -571,8 +692,15 @@ function Home() {
       <Box bgColor="#F4F7FD">
         <Flex alignItems="center" flexDir="column">
           <Flex justifyContent="center" mt={{ base: "16px", md: "80px" }}>
-            <Heading fontSize={{ base: "18px", md: "32px" }} color="#0B0755">
-              Conheça nossos projetos
+            <Heading
+              mr="8px"
+              fontSize={{ base: "18px", md: "32px" }}
+              color="#0B0755"
+            >
+              Conheça nossos
+            </Heading>
+            <Heading color="#3182CE" fontSize={{ base: "18px", md: "32px" }}>
+              projetos
             </Heading>
           </Flex>
           <Flex
@@ -584,6 +712,8 @@ function Home() {
             alignItems={{ base: "center", md: "none" }}
           >
             <Ultpage
+              reverse="none"
+              display="block"
               img={pcdev}
               width={{ base: "151px", md: "253px" }}
               high={{ base: "119px", md: "205px" }}
@@ -593,7 +723,7 @@ function Home() {
             precisa de um empurrão pra começar!"
             />
             <Ultpage
-              clean={{ base: "none", md: "block" }}
+              display={{ base: "none", md: "block" }}
               img={jobdev}
               width="271px"
               high="166px"
