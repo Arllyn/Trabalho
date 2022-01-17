@@ -23,6 +23,21 @@ import quadrado from "../images/quadrado.png";
 import devsorri from "../images/devsorri.png";
 import pcdev from "../images/pcdev.png";
 import jobdev from "../images/jobdev.png";
+function Botao({ desc, width, mtop, mbot }) {
+  return (
+    <Button
+      mt={mtop}
+      mb={mbot}
+      fontSize={{ base: "16px", md: "24px" }}
+      bgColor='#2BB070'
+      color='white'
+      w={width}
+      h={{ base: "35px", md: "71px" }}
+    >
+      {desc}
+    </Button>
+  );
+}
 function Ultpage({ clean, desc, title, width, high, img, reverse, marginb }) {
   return (
     <Box
@@ -156,10 +171,19 @@ function Cf({ desc, title, width, value, mb }) {
       flexDir={{ base: "column", md: "row" }}
     >
       <Flex flexDir='column' w={width}>
-        <Heading fontWeight='700' mb='16px' fontSize='28px' color='#0B0755'>
+        <Heading
+          fontWeight='700'
+          mb='16px'
+          fontSize={{ base: "14px", md: "28px" }}
+          color='#0B0755'
+        >
           {title}
         </Heading>
-        <Text textAlign='justify' fontSize='21px' color='#0B0755'>
+        <Text
+          textAlign='justify'
+          fontSize={{ base: "16px", md: "21px" }}
+          color='#0B0755'
+        >
           {desc}
         </Text>
       </Flex>
@@ -167,12 +191,12 @@ function Cf({ desc, title, width, value, mb }) {
         mt='16px'
         alignItems='center'
         justifyContent='center'
-        fontSize='40px'
+        fontSize={{ base: "20px", md: "40px" }}
         color='white'
-        w='265px'
-        h='96px'
+        w={{ base: "155px", md: "265px" }}
+        h={{ base: "56px", md: "96px" }}
         bgColor='#3182CE'
-        rounded='md'
+        rounded='lg'
         fontWeight='700'
       >
         R$ {value}
@@ -274,17 +298,12 @@ function Home() {
               h={{ base: "173px", md: "489px" }}
               src={doutoradevs}
             />
-            <Button
-              mt={{ base: "18px", md: "24px" }}
-              w={{ base: "232px", md: "423px" }}
-              h={{ base: "35px", md: "68px" }}
-              fontSize={{ base: "16px", md: "24px" }}
-              backgroundColor='#2BB070'
-              color='#FFFFFF'
-              mb={{ base: "16px", md: "0px" }}
-            >
-              Comece a cuidar de você!
-            </Button>
+            <Botao
+              width={{ base: "100%", md: "423px" }}
+              desc='Comece a cuidar de você!'
+              mtop={{ base: "16px", md: "24px" }}
+              mbot={{ base: "16", md: "116" }}
+            />
           </Flex>
           <Flex>
             <Image
@@ -431,36 +450,19 @@ function Home() {
           mt={{ base: "0px", md: "142px" }}
           mb={{ base: "21px", md: "53px" }}
         >
-          <Button
-            display={{ base: "none", md: "flex" }}
-            w={{ base: "232px", md: "440px" }}
-            h={{ base: "35px", md: "71px" }}
-            fontSize={{ base: "16px", md: "24px" }}
-            backgroundColor='#2BB070'
-            color='#FFFFFF'
-          >
-            Coloque sua saúde mental em dia
-          </Button>
-          <Button
-            display={{ base: "flex", md: "none" }}
-            w={{ base: "232px", md: "440px" }}
-            h={{ base: "35px", md: "71px" }}
-            fontSize={{ base: "16px", md: "24px" }}
-            backgroundColor='#2BB070'
-            color='#FFFFFF'
-          >
-            Comece a cuidar de você!
-          </Button>
+          <Botao
+            width={{ base: "232", md: "423px" }}
+            desc='Coloque sua saúde mental em dia'
+          />
         </Flex>
       </Box>
-      <Box backgroundColor='white' justifyContent='center'>
-        <Flex padding={{ base: "36px 16px", md: "none" }} flexDir='column'>
+      <Box backgroundColor='white'>
+        <Flex padding={{ base: "16px 39px", md: "none" }} flexDir='column'>
           <Flex
-            display={{ base: "block", md: "flex" }}
             mt={{ base: "24px", md: "40px" }}
             borderBottom={{ base: "none", md: "1px solid #0B0755" }}
             paddingBottom='8px'
-            w={{ base: "180px", md: "306px" }}
+            w={{ base: "100%", md: "306px" }}
             mx='auto'
             textAlign='center'
             fontSize={{ base: "24px", md: "40px" }}
@@ -477,7 +479,6 @@ function Home() {
               Funciona
             </Heading>
           </Flex>
-
           <Text
             textAlign='center'
             fontSize={{ base: "14px", md: "20px" }}
@@ -492,6 +493,7 @@ function Home() {
             alignItems='center'
           >
             <Cf
+              value='XXX,XX'
               title='Sessão de avaliação'
               desc='Uma sessão para identificar o que te causa desconforto emocional, como você pode trabalhar isso junto com
               o psicólogo, o que pode ser feito para melhor suprir suas necessidades durante o acompanhamento e como isso pode
@@ -504,40 +506,37 @@ function Home() {
               desc='Você terá consultas semanais com todo o suporte através de vídeo chamadas para que você consiga identificar e tratar
               o que lhe causa desconforto. O acompanhamento conta com receitas digitais para facilitar o tratamento.'
               width={{ base: "100%", md: "620px" }}
-              value='69,99'
+              value='XXX,XX'
             />
           </Flex>
         </Flex>
         <Flex justifyContent='center'>
-          <Button
-            mt='48px'
-            mb='32px'
-            w='440px'
-            h='71px'
-            color='white'
-            fontSize='24px'
-            bgColor='#2BB070'
-          >
-            Quero começar agora!
-          </Button>
+          <Botao
+            width={{ base: "220px", md: "440px" }}
+            desc='Quero começar agora!'
+            mtop='48px'
+            mbot='40px'
+          />
         </Flex>
       </Box>
 
       <Box bgColor='#F4F7FD'>
         <Flex flexDir='column'>
           <Flex
-            justifyContent='center'
-            mt='40px'
-            w='706px'
+            alignItems='center'
+            mt={{ base: "24px", md: "40px" }}
+            w={{ base: "100%", md: "706px" }}
             borderBottom={{ base: "none", md: "1px solid #0B0755" }}
             paddingBottom='8px'
             mx='auto'
+            flexDir={{ base: "column", md: "row" }}
+            justifyContent='center'
           >
             <Heading
               fontSize={{ base: "18px", md: "32px" }}
               textAlign='center'
               color='#0B0755'
-              mr='8px'
+              mr={{ base: "none", md: "8px" }}
             >
               Em dúvida? Veja o que dizem
             </Heading>
@@ -566,32 +565,13 @@ function Home() {
               desc1='Paulo Jackson - Front End @ Ifood Brasil'
               reverse={{ base: "column", md: "row" }}
             />
+            <Botao
+              width={{ base: "232px", md: "423px" }}
+              desc='Comece a cuidar de você!'
+              mtop='80px'
+              mbot='40px'
+            />
             <Flex />
-            <Button
-              display={{ base: "none", md: "flex" }}
-              mt={{ base: "40px", md: "124px" }}
-              bgColor='#2BB070'
-              w={{ base: "232px", md: "440px" }}
-              h={{ base: "35px", md: "80px" }}
-              color='#FFFFFF'
-              fontSize={{ base: "16px", md: "24px" }}
-              mb={{ base: "16px", md: "80px" }}
-            >
-              Coloque sua saúde mental em dia
-            </Button>
-
-            <Button
-              display={{ base: "flex", md: "none" }}
-              mt={{ base: "40px", md: "124px" }}
-              bgColor='#2BB070'
-              w={{ base: "232px", md: "440px" }}
-              h={{ base: "35px", md: "80px" }}
-              color='#FFFFFF'
-              fontSize={{ base: "16px", md: "24px" }}
-              mb={{ base: "16px", md: "80px" }}
-            >
-              Comece a cuidar de você!
-            </Button>
           </Flex>
         </Flex>
       </Box>
@@ -625,6 +605,7 @@ function Home() {
           flexDir='column'
           mx='auto'
           mt={{ base: "22px", md: "91px" }}
+          mb={{ base: "none", md: "140px" }}
         >
           <Faqpage
             title='Quais são as principais formas de pagamento?'
@@ -642,30 +623,14 @@ function Home() {
             title='Quais são as principais formas de pagamento?'
             desc='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl, faucibus ut neque quisque mi condimentum urna varius. Pellentesque bibendum aliquam risus adipiscing id elementum. Porttitor augue eget nulla ut nulla magna ac nunc tempor.'
           />
-          <Button
-            display={{ base: "flex", md: "none" }}
-            mt={{ base: "40px", md: "124px" }}
-            bgColor='#2BB070'
-            w={{ base: "232px", md: "440px" }}
-            h={{ base: "35px", md: "80px" }}
-            color='#FFFFFF'
-            fontSize={{ base: "16px", md: "24px" }}
-            mb={{ base: "28px", md: "80px" }}
-          >
-            Comece a cuidar de você!
-          </Button>
-          <Button
-            display={{ base: "none", md: "flex" }}
-            mt={{ base: "40px", md: "124px" }}
-            bgColor='#2BB070'
-            w={{ base: "232px", md: "440px" }}
-            h={{ base: "35px", md: "80px" }}
-            color='#FFFFFF'
-            fontSize={{ base: "16px", md: "24px" }}
-            mb={{ base: "28px", md: "80px" }}
-          >
-            Coloque sua saúde mental em dia
-          </Button>
+        </Flex>
+        <Flex justifyContent='center'>
+          <Botao
+            desc='Coloque sua saúde mental em dia'
+            width={{ base: "281px", md: "440px" }}
+            mbot={{ base: "32px", md: "153px" }}
+            mtop={{ base: "24px", md: "32px" }}
+          />
         </Flex>
       </Box>
       <Box bgColor='#F4F7FD'>
@@ -685,7 +650,7 @@ function Home() {
           <Flex
             flexDir={{ base: "column", md: "row" }}
             mb={{ base: "24px", md: "48px" }}
-            w={{ base: "100%", md: "1210px" }}
+            w={{ base: "100%", md: "1280px" }}
             mt={{ base: "24px", md: "88px" }}
             justifyContent='space-between'
             alignItems={{ base: "center", md: "none" }}
