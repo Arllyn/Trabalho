@@ -11,6 +11,7 @@ import {
   AccordionItem,
   AccordionPanel,
   Divider,
+  Icon,
 } from "@chakra-ui/react";
 import imgdevs from "../images/imgdevs.png";
 import doutoradevs from "../images/doutoradevs.png";
@@ -41,7 +42,7 @@ function Botao({ desc, width, mtop, mbot }) {
 function Ultpage({ clean, desc, title, width, high, img, reverse, marginb }) {
   return (
     <Box
-      display={clean}
+      d={display}
       rounded='md'
       w={{ base: "348px", md: "580px" }}
       p={{ base: "16px 16px", md: "16px 24px" }}
@@ -89,15 +90,31 @@ function Faqpage({ title, desc }) {
       <Accordion allowMultiple>
         <AccordionItem rounded='md' boxShadow='md'>
           <AccordionButton
-            w={{ base: "100%", md: "1280px" }}
+            w={{ base: "328px", md: "1280px" }}
             onClick={handleToggle}
           >
-            <Text color='#0B0755' fontSize={{ base: "12px", md: "24px" }}>
-              {title}
-            </Text>
+            <Flex w='100%' alignItems='center' justifyContent='space-between'>
+              <Text color='#0B0755' fontSize={{ base: "12px", md: "24px" }}>
+                {title}
+              </Text>
+
+              {show ? (
+                <Icon
+                  color='blue'
+                  as={FiArrowUp}
+                  fontSize={{ base: "18px", md: "25px" }}
+                />
+              ) : (
+                <Icon
+                  color='blue'
+                  as={FiArrowDown}
+                  fontSize={{ base: "18px", md: "25px" }}
+                />
+              )}
+            </Flex>
           </AccordionButton>
           <Divider />
-          <AccordionPanel w={{ base: "100%", md: "1280px" }}>
+          <AccordionPanel w={{ base: "328px", md: "1280px" }}>
             <Text
               fontSize={{ base: "12px", md: "20px" }}
               color='#2F2E41'
@@ -656,6 +673,8 @@ function Home() {
             alignItems={{ base: "center", md: "none" }}
           >
             <Ultpage
+              reverse='none'
+              display='block'
               img={pcdev}
               width={{ base: "151px", md: "253px" }}
               high={{ base: "119px", md: "205px" }}
@@ -665,7 +684,7 @@ function Home() {
             precisa de um empurrão pra começar!'
             />
             <Ultpage
-              clean={{ base: "none", md: "block" }}
+              display={{ base: "none", md: "block" }}
               img={jobdev}
               width='271px'
               high='166px'
